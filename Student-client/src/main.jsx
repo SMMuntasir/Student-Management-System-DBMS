@@ -22,6 +22,9 @@ import AuthContext from './Auth/AuthContext.jsx'
 import UpdateTutorial from './UpdateTutorial.jsx';
 import PerformanceDetails from './Performance.jsx';
 import AddAssignmentPage from './AddAssignmentPage.jsx';
+import AllMessagesPage from './AllMessagesPage.jsx';
+import SendMessagePage from './SendMessagePage.jsx';
+import AboutUsPage from './AboutUsPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -77,6 +80,15 @@ const router = createBrowserRouter([
       },{
         path:"/AddAssignmentPage",
         element:<AddAssignmentPage></AddAssignmentPage>
+      },{
+        path:"/message",
+        element:<AllMessagesPage></AllMessagesPage>
+      },{
+        path:"/sendMessage",
+        element:<SendMessagePage></SendMessagePage>
+      },{
+        path:"/aboutUs",
+        element:<AboutUsPage></AboutUsPage>
       }
     ]
   },

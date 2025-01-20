@@ -14,7 +14,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const PerformanceDetails = () => {
     const { SID } = useParams(); // Get SID from URL parameters
     const [performance, setPerformance] = useState(null);
-
+    const [assignments, setAssignments] = useState([]);
     // Fetch performance data for the student
     useEffect(() => {
         fetch(`http://localhost:5000/performance/${SID}`)
@@ -25,17 +25,24 @@ const PerformanceDetails = () => {
             .catch((err) => console.error("Error fetching performance data:", err));
     }, [SID]);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/assignments/${SID}`)
+            .then((response) => response.json())
+            .then((data) => setAssignments(data))
+            .catch((err) => console.error("Error fetching assignments:", err));
+    }, [SID]);
+
     if (!performance) {
         return <div>Loading...</div>;
     }
 
-    // Donut chart data for each section
+
     const midtermData = {
         labels: ["Midterm Score", "Remaining"],
         datasets: [
             {
                 data: [performance.midterm_number, 30 - performance.midterm_number],
-                backgroundColor: ["#0000b3", "#6b7280"], // Dark Gray for Midterm, Light Gray for remaining
+                backgroundColor: ["#0000b3", "#6b7280"],
                 borderWidth: 0,
             },
         ],
@@ -68,9 +75,15 @@ const PerformanceDetails = () => {
             <h1 className="text-2xl font-bold mb-4 text-white">
                 Performance Details for Student {performance.SID}
             </h1>
-            <div className="bg-[#1f2937] p-6 rounded-md shadow-md mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-white">Performance Summary</h2>
-                <table className="table-auto w-full border-collapse border border-gray-300 mb-8">
+            <div className="bg-[#1f2937] p-6 rounded-md shadow-md mb-8 relative">
+                <h2 className="inline-block text-xl font-semibold mb-4 text-white">Performance Summary</h2>
+                <div
+                    className="text-[#111827] flex items-center justify-center absolute top-0 text-xl right-0 rounded-full size-20 border-8 border-[#374151] bg-white  font-bold shadow-md"
+                >
+                    {performance.assignment + performance.final_number + performance.midterm_number}/90
+                </div>
+
+                <table className="table-auto w-full border-collapse border border-gray-300 mb-8 mt-9">
                     <thead>
                         <tr>
                             <th className="border border-gray-300 px-4 py-2 text-white">Exam</th>
@@ -99,7 +112,17 @@ const PerformanceDetails = () => {
                         <tr>
                             <td className="border border-gray-300 px-4 py-2 text-white">Due Work</td>
                             <td className="border border-gray-300 px-4 py-2 text-white">
-                                {performance.due_work}
+                                {assignments.length > 0 ? (
+                                    <ul>
+                                        {assignments.map((assignment) => (
+                                            <li key={assignment.due_date}>
+                                                {assignment.assignment_name} (Due: {assignment.due_date})
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    "No due work"
+                                )}
                             </td>
                         </tr>
                     </tbody>

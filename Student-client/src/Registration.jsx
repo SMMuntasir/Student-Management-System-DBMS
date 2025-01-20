@@ -29,11 +29,11 @@ const Registration = () => {
     }
     const [show,setShow]=useState(true)
     return (
-        <div>
+        <div className='bg-[#111827]'>
             <div className="hero  min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     
-                    <div className="card  w-full max-w-sm shrink-0 shadow-2xl bg-[#f3c5c5] text-[#09050e]">
+                    <div className="card  w-full max-w-sm shrink-0 shadow-2xl bg-[#374151] text-[#09050e]">
                         <form onSubmit={handleSubmit} className="card-body ">
                             <h1 className="card-title pb-4">Registration</h1>
                             <div className="form-control ">

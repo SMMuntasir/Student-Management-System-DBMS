@@ -41,19 +41,19 @@ const Login = () => {
         const [show,setShow]=useState(true);
         // console.log(show)
     return (
-        <div>
+        <div className='bg-[#111827]'>
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse ">
                     <div className="text-center lg:text-left md:flex hidden ">
 
                         <Lottie className='w-[27rem]' animationData={LoginAnima}></Lottie>
                     </div>
-                    <div className="card  w-full max-w-sm shrink-0 shadow-2xl bg-[#fae0c1] text-[#09050e]">
+                    <div className="card  w-full max-w-sm shrink-0 shadow-2xl bg-[#374151] text-[#09050e]">
                         <form onSubmit={handleSubmit} className="card-body">
-                            <h1 className="card-title pb-4">Login now!</h1>
+                            <h1 className="card-title pb-4 text-white">Login now!</h1>
                             <div className="form-control ">
                                 <label className="label">
-                                    <span className="label-text text-[#09050e] ">Email</span>
+                                    <span className="label-text text-white ">Email</span>
                                 </label>
                                 <input name='email' type="email" placeholder="email" className="input input-bordered text-white" required />
                             </div>
@@ -65,7 +65,7 @@ const Login = () => {
                             <div className="form-control mt-6 ">
                                 <button className="btn btn-primary ring-offset-2 hover:ring-4">Login</button>
                             </div>
-                            <div className="divider divider-primary">OR</div>
+                            <div className="divider divider-primary text-white">OR</div>
                             <button onClick={popUp} className="btn btn-primary ring-offset-2 hover:ring-4">Google</button>
                             <NavLink to='/registration'><button className="btn btn-primary w-full ring-offset-2 hover:ring-4">Registration</button></NavLink>
                         </form>

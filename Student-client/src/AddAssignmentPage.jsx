@@ -49,7 +49,7 @@ const AddAssignmentPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-[#34455d]">
+    <div className="container h-[628px] mx-auto p-4 bg-[#34455d] ">
       <h1 className="text-2xl font-bold mb-4">Add New Assignment</h1>
       <form onSubmit={handleSubmit} className="bg-[#1f2937] p-6 rounded-md shadow-md">
         <div className="mb-4">

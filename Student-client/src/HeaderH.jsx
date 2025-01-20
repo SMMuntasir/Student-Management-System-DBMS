@@ -7,7 +7,8 @@ const HeaderH = () => {
 
   return (
     <aside className="w-64 bg-gray-800 h-screen fixed top-0 left-0 p-5">
-      <h1 className="text-2xl font-bold text-white mb-8">Scholarly</h1>
+      <h1 className="inline-block text-2xl font-bold text-white mb-8">Scholarly</h1>
+      {user?<div className='ml-14  rounded-full size-10 inline-block'><img className='rounded-full' src={user.photoURL} alt="" /></div>:""}
       <ul className="space-y-4">
         <li>
           <NavLink
@@ -41,32 +42,33 @@ const HeaderH = () => {
         </li>
         <li>
           <NavLink
-            to="/students"
+            to="/message"
             className={({ isActive }) =>
               isActive ? "text-white" : "text-gray-300 hover:text-white"
             }
           >
-            My Students
+            Message
+          </NavLink>
+        </li>
+       
+        <li>
+          <NavLink
+            to="/sendMessage"
+            className={({ isActive }) =>
+              isActive ? "text-white" : "text-gray-300 hover:text-white"
+            }
+          >
+            Sent Message
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/courses"
+            to="/aboutUs"
             className={({ isActive }) =>
               isActive ? "text-white" : "text-gray-300 hover:text-white"
             }
           >
-            Courses
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/library"
-            className={({ isActive }) =>
-              isActive ? "text-white" : "text-gray-300 hover:text-white"
-            }
-          >
-            Library
+            About Us
           </NavLink>
         </li>
         <li>
